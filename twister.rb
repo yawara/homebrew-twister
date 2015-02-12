@@ -28,6 +28,7 @@ class Twister < Formula
       --sysconfdir=#{etc}
       --with-openssl=#{Formula["openssl"].opt_prefix}
       --with-libdb=#{Formula["berkeley-db4"].opt_prefix}
+      --with-boost=#{Formula["boost"].opt_prefix}
     ]
 
     system "./configure", *args
