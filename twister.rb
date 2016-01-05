@@ -1,11 +1,9 @@
 class Twister < Formula
+  desc "Peer-to-peer microblogging"
   homepage "http://twister.net.co"
-
-  devel do
-    url "https://github.com/miguelfreitas/twister-core/archive/v0.9.28.tar.gz"
-    sha1 "53b03636ae4d7539002fe9c3cf2dd58e9657ac1e"
-  end
-
+  url "https://github.com/miguelfreitas/twister-core/archive/v0.9.34.tar.gz"
+  sha256 "b250508c7d1c72d1d0dcb2377f65199d1af27e3da9a0f4b4277d818304b101bf"
+  
   head do
     url "https://github.com/miguelfreitas/twister-core.git"
   end
@@ -23,15 +21,12 @@ class Twister < Formula
 
     system "./autotool.sh"
 
-    args = %W[
-      --prefix=#{prefix}
-      --sysconfdir=#{etc}
-      --with-openssl=#{Formula["openssl"].opt_prefix}
-      --with-libdb=#{Formula["berkeley-db4"].opt_prefix}
-      --with-boost=#{Formula["boost"].opt_prefix}
-    ]
-
-    system "./configure", *args
+    system "./configure", "--prefix=#{prefix}",
+                          "--sysconfdir=#{etc}",
+                          "--with-openssl=#{Formula["openssl"].opt_prefix}",
+                          "--with-libdb=#{Formula["berkeley-db4"].opt_prefix}",
+                          "--with-boost=#{Formula["boost"].opt_prefix}"
+    
     system "make", "install"
   end
 
